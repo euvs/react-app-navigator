@@ -6,20 +6,19 @@ export interface IAppNavigateInputProps {
     pathname: string;
     setOrigin?: boolean;
     modal?: boolean;
-    query?: any;
     state?: any;
 }
 
 export interface IAppNavigateReplaceInputProps {
     pathname: string;
-    query?: any;
     state?: any;
 }
 
 export interface IAppNavigator {
-    navigateToOrigin: () => void;
     navigate: (input: IAppNavigateInputProps) => void;
+    navigateToOrigin: () => void;
     replace: (input: IAppNavigateReplaceInputProps) => void;
+    replaceToOrigin: () => void;
 }
 
 export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}> extends RouteComponentProps<Params> {
@@ -28,7 +27,7 @@ export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: strin
 
 const createNavigator = (props) => {
 
-    const navigate = ({ pathname, setOrigin = false, modal = false, query = {}, state = {} }: IAppNavigateInputProps) => {
+    const navigate = ({pathname, setOrigin = false, modal = false, state = {}}: IAppNavigateInputProps) => {
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
@@ -39,30 +38,33 @@ const createNavigator = (props) => {
 
         props.history.push({
             pathname: pathname,
-            query: query,
             state: state,
         });
     };
 
+    const replace = (input: IAppNavigateReplaceInputProps) => {
+        props.history.replace(input)
+    };
+
+    const navigateToOrigin = () => {
+        const returnTo = _.get(props, 'location.state.returnTo', '/');
+        props.history.push(returnTo);
+    };
+
+    const replaceToOrigin = () => {
+        const returnTo = _.get(props, 'location.state.returnTo', '/');
+        props.history.replace(returnTo);
+    };
+
+    const createAppNavigator = (): IAppNavigator => ({
+        replace,
+        navigate,
+        replaceToOrigin,
+        navigateToOrigin,
+    });
+
     return {
-        AppNavigator: {
-            navigateToOrigin: () => {
-                const returnTo = _.get(props, 'location.state.returnTo', '/');
-                props.history.push(returnTo);
-            },
-            navigateRelative: ({relativePath, setOrigin = false}) => {
-                const query: any = {};
-                if (setOrigin) {
-                    query.returnTo = props.location.pathname;
-                }
-                props.history.push(
-                    `${props.match.path}${relativePath}`, {
-                        query: query,
-                    },
-                );
-            },
-            navigate: navigate,
-        },
+        AppNavigator: createAppNavigator()
     };
 };
 
