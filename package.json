@@ -1,0 +1,37 @@
+{
+  "name": "@euvs/app-navigator",
+  "version": "0.1.0",
+  "description": "React App Navigotor",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "private": true,
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "npm run build:ts",
+    "build:watch": "npm run build:ts:watch",
+    "build:ts": "./node_modules/.bin/tsc -p ./ ",
+    "build:ts:watch": "./node_modules/.bin/tsc --watch -p ./ ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "query-string": "5.0.1",
+    "lodash": "^4.17.10",
+    "recompose": "^0.30.0",
+    "invariant": "^2.2.4",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/react": "^16",
+    "react": ">=16",
+    "react-router": "~4",
+    "react-router-dom": "~4"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-router": "~4",
+    "react-router-dom": "~4"
+  },
+  "author": "Eugene Vostrikov",
+  "license": "MIT"
+}
