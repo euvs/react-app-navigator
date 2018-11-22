@@ -4,7 +4,6 @@
   "description": "React App Navigotor",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
-  "private": true,
   "scripts": {
     "prepublish": "npm run build",
     "build": "npm run build:ts",
