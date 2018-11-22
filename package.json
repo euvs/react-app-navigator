@@ -9,8 +9,8 @@
     "prepublish": "npm run build",
     "build": "npm run build:ts",
     "build:watch": "npm run build:ts:watch",
-    "build:ts": "./node_modules/.bin/tsc -p ./ ",
-    "build:ts:watch": "./node_modules/.bin/tsc --watch -p ./ ",
+    "build:ts": "tsc -p ./ ",
+    "build:ts:watch": "tsc --watch -p ./ ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -33,5 +33,16 @@
     "react-router-dom": "~4"
   },
   "author": "Eugene Vostrikov",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://euvs@github.com/euvs/react-app-navigator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/euvs/react-app-navigator/issues"
+  },
+  "homepage": "https://github.com/euvs/react-app-navigator#readme"
 }
