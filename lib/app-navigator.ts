@@ -30,8 +30,6 @@ export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: strin
 
 const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
 
-    console.log(props);
-
     const navigate = ({pathname, setOrigin = false, modal = false, state = {}, relativeToModule = false}: IAppNavigateInputProps) => {
 
         if (setOrigin) {
