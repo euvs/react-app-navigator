@@ -9,6 +9,9 @@ export const ModuleRoot = withRouter(({children, match}) => {
     </ModuleRouteContext.Provider>;
 });
 
+export interface IWithModuleRootPathProps {
+    moduleRootPath: string
+}
 export const withModuleRootPath = (C) => (props) => {
     return <ModuleRouteContext.Consumer>{
         (value) => {

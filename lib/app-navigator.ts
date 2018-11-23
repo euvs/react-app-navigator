@@ -1,12 +1,14 @@
 import {compose, withProps} from 'recompose';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import * as _ from 'lodash';
+import {IWithModuleRootPathProps, withModuleRootPath} from "./module-route";
 
 export interface IAppNavigateInputProps {
     pathname: string;
     setOrigin?: boolean;
     modal?: boolean;
     state?: any;
+    relativeToModule?: boolean;
 }
 
 export interface IAppNavigateReplaceInputProps {
@@ -19,21 +21,28 @@ export interface IAppNavigator {
     navigateToOrigin: () => void;
     replace: (input: IAppNavigateReplaceInputProps) => void;
     replaceToOrigin: () => void;
+    moduleRootPath: string;
 }
 
 export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}> extends RouteComponentProps<Params> {
     AppNavigator: IAppNavigator;
 }
 
-const createNavigator = (props) => {
+const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
 
-    const navigate = ({pathname, setOrigin = false, modal = false, state = {}}: IAppNavigateInputProps) => {
+    console.log(props);
+
+    const navigate = ({pathname, setOrigin = false, modal = false, state = {}, relativeToModule = false}: IAppNavigateInputProps) => {
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
         }
         if (modal) {
             state.modal = true;
+        }
+
+        if (relativeToModule) {
+            pathname = `${props.moduleRootPath}${pathname}`;
         }
 
         props.history.push({
@@ -61,6 +70,7 @@ const createNavigator = (props) => {
         navigate,
         replaceToOrigin,
         navigateToOrigin,
+        moduleRootPath: props.moduleRootPath,
     });
 
     return {
@@ -71,5 +81,6 @@ const createNavigator = (props) => {
 export const withAppNavigator = () =>
     compose(
         withRouter,
+        withModuleRootPath,
         withProps(createNavigator),
     );
