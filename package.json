@@ -1,5 +1,5 @@
 {
-  "name": "@euvs/app-navigator",
+  "name": "@euvs/react-app-navigator",
   "version": "0.2.0",
   "description": "React App Navigotor",
   "main": "build/index.js",
