@@ -3,23 +3,22 @@ import {RouteComponentProps, withRouter} from 'react-router-dom';
 import * as _ from 'lodash';
 import {IWithModuleRootPathProps, withModuleRootPath} from "./module-route";
 
-export interface IAppNavigateInputProps {
+export interface IAppNavigatorInputProps {
     pathname: string;
-    setOrigin?: boolean;
-    modal?: boolean;
     state?: any;
     relativeToModule?: boolean;
 }
 
-export interface IAppNavigateReplaceInputProps {
-    pathname: string;
-    state?: any;
+export interface IAppNavigtorNavigateInputProps extends IAppNavigatorInputProps {
+    setOrigin?: boolean;
+    modal?: boolean;
 }
 
+
 export interface IAppNavigator {
-    navigate: (input: IAppNavigateInputProps) => void;
+    navigate: (input: IAppNavigtorNavigateInputProps) => void;
     navigateToOrigin: () => void;
-    replace: (input: IAppNavigateReplaceInputProps) => void;
+    replace: (input: IAppNavigatorInputProps) => void;
     replaceToOrigin: () => void;
     moduleRootPath: string;
 }
@@ -30,11 +29,12 @@ export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: strin
 
 const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
 
-    const navigate = ({pathname, setOrigin = false, modal = false, state = {}, relativeToModule = false}: IAppNavigateInputProps) => {
+    const navigate = ({pathname, setOrigin = false, modal = false, state = {}, relativeToModule = false}: IAppNavigtorNavigateInputProps) => {
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
         }
+
         if (modal) {
             state.modal = true;
         }
@@ -49,7 +49,10 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
         });
     };
 
-    const replace = (input: IAppNavigateReplaceInputProps) => {
+    const replace = (input: IAppNavigatorInputProps) => {
+        if (input.relativeToModule) {
+            input.pathname = `${props.moduleRootPath}${input.pathname}`;
+        }
         props.history.replace(input)
     };
 
