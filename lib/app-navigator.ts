@@ -14,7 +14,6 @@ export interface IAppNavigtorNavigateInputProps extends IAppNavigatorInputProps 
     modal?: boolean;
 }
 
-
 export interface IAppNavigator {
     navigate: (input: IAppNavigtorNavigateInputProps) => void;
     navigateToOrigin: () => void;
