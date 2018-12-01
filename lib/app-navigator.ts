@@ -3,32 +3,36 @@ import {RouteComponentProps, withRouter} from 'react-router-dom';
 import * as _ from 'lodash';
 import {IWithModuleRootPathProps, withModuleRootPath} from "./module-route";
 
-export interface IAppNavigatorInputProps {
-    pathname: string;
+export interface IAppNavigatorOptions {
     state?: any;
     relativeToModule?: boolean;
 }
 
-export interface IAppNavigtorNavigateInputProps extends IAppNavigatorInputProps {
+export interface IAppNavigatorReplaceOptions extends IAppNavigatorOptions {
+}
+
+export interface IAppNavigatorNavigateOptions extends IAppNavigatorOptions {
     setOrigin?: boolean;
     modal?: boolean;
 }
 
 export interface IAppNavigator {
-    navigate: (input: IAppNavigtorNavigateInputProps) => void;
+    navigate: (pathname: string, options?: IAppNavigatorNavigateOptions) => void;
     navigateToOrigin: () => void;
-    replace: (input: IAppNavigatorInputProps) => void;
+    replace: (pathname: string, options?: IAppNavigatorReplaceOptions) => void;
     replaceToOrigin: () => void;
     moduleRootPath: string;
 }
 
-export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}> extends RouteComponentProps<Params> {
+export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = any> extends RouteComponentProps<Params> {
     AppNavigator: IAppNavigator;
 }
 
 const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
 
-    const navigate = ({pathname, setOrigin = false, modal = false, state = {}, relativeToModule = false}: IAppNavigtorNavigateInputProps) => {
+    const navigate = (pathname: string, options?: IAppNavigatorNavigateOptions) => {
+
+        const {setOrigin = false, modal = false, state = {}, relativeToModule = false} = options || {};
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
@@ -48,21 +52,27 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
         });
     };
 
-    const replace = (input: IAppNavigatorInputProps) => {
-        if (input.relativeToModule) {
-            input.pathname = `${props.moduleRootPath}${input.pathname}`;
+    const replace = (pathname: string, options?: IAppNavigatorReplaceOptions) => {
+        const {state = {}, relativeToModule = false} = options || {};
+
+        if (relativeToModule) {
+            pathname = `${props.moduleRootPath}${pathname}`;
         }
-        props.history.replace(input)
+        const replaceOptions = {
+            pathname: pathname,
+            state: state,
+        };
+        props.history.replace(pathname, replaceOptions)
     };
 
     const navigateToOrigin = () => {
         const returnTo = _.get(props, 'location.state.returnTo', '/');
-        props.history.push(returnTo);
+        navigate(returnTo);
     };
 
     const replaceToOrigin = () => {
         const returnTo = _.get(props, 'location.state.returnTo', '/');
-        props.history.replace(returnTo);
+        replace(returnTo);
     };
 
     const createAppNavigator = (): IAppNavigator => ({

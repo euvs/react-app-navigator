@@ -46,6 +46,9 @@ export const ModuleSwitch: React.FC = ({children}) => {
     }</ModuleRouteContext.Consumer>;
 };
 
+
+export const ModuleSwitch_d = Switch;
+
 export const ModuleLink: React.FC<LinkProps> = (props) => {
     return <ModuleRouteContext.Consumer>{
         (value) => {
@@ -67,4 +70,10 @@ export const ModuleNavLink: React.FC<LinkProps> = (props) => {
 };
 
 
-export const ModuleRoute = Route;
+export const ModuleRoute = (props)=> <ModuleRouteContext.Consumer>{
+    (value) => {
+        const newPath = `${value}${props.path}`;
+        return <Route {...props} path={newPath}/>;
+    }
+}
+</ModuleRouteContext.Consumer>;

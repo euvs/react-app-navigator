@@ -1,0 +1,81 @@
+.app {
+    padding: 0;
+}
+
+
+.nav {
+    padding: 10px 10px;
+    width: 100%;
+    background-color: #1f3f6e;
+}
+
+.nav a {
+    display: inline-block;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin: 0 10px;
+    width: 60px;
+    text-align: center;
+    background-color: #79a3ca;
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background-color: #26b7ff;
+}
+
+
+main {
+    padding: 5px 20px;
+}
+
+.nav-secondary {
+    padding: 10px 10px;
+    margin: 5px -10px 20px;
+    width: 100%;
+    background-color: #56a850;
+    border-radius: 5px;
+}
+
+.nav-secondary a {
+    display: inline-block;
+    padding: 10px 6px;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: #7fe261;
+    color: #ffffff;
+    text-decoration: none;
+    width: 60px;
+    text-align: center;
+}
+
+.nav-secondary a:hover {
+    background-color: #8cfb6d;
+}
+
+
+.segment {
+    padding: 20px;
+    margin: 5px 5px 10px;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+}
+
+button {
+    font-size: 0.8em;
+    text-shadow: none;
+    outline: 0;
+    padding: .5em 1em .5em;
+    margin: 0 5px;
+    border-radius: .28571429rem;
+}
+
+a {
+    margin: 0 5px;
+}
+
+button:hover {
+    background-color: #edeeef;
+    cursor: pointer;
+}
