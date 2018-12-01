@@ -14,11 +14,16 @@
     padding: 10px 10px;
     border-radius: 5px;
     margin: 0 10px;
-    width: 60px;
+    min-width: 60px;
     text-align: center;
     background-color: #79a3ca;
     color: #f2f2f2;
     text-decoration: none;
+}
+
+.nav a:hover.active,
+.nav a.active {
+    background-color: red;
 }
 
 .nav a:hover {
@@ -48,6 +53,11 @@ main {
     text-decoration: none;
     width: 60px;
     text-align: center;
+}
+
+.nav-secondary a:hover.active,
+.nav-secondary a.active {
+    background-color: red;
 }
 
 .nav-secondary a:hover {

@@ -24,7 +24,7 @@ export interface IAppNavigator {
     moduleRootPath: string;
 }
 
-export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = any> extends RouteComponentProps<Params> {
+export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}> extends RouteComponentProps<Params> {
     AppNavigator: IAppNavigator;
 }
 
