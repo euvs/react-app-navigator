@@ -1,6 +1,6 @@
-import {Route, Switch, withRouter} from 'react-router';
+import {Route, RouteProps, Switch, withRouter} from 'react-router';
 import * as React from 'react';
-import {Link, LinkProps, NavLink} from "react-router-dom";
+import {Link, LinkProps, NavLink, NavLinkProps} from "react-router-dom";
 
 const ModuleRouteContext = React.createContext('/');
 
@@ -35,9 +35,12 @@ export const ModuleSwitch: React.FC = ({children}) => {
                 }
 
                 const childProps: any = child.props;
+                const isModuleRoute = child.type === ModuleRoute;
+
                 const path = childProps.path || '';
                 const newPath = `${value}${path}`;
-                return React.cloneElement<any>(child, {...child.props, path: newPath});
+
+                return React.cloneElement<any>(child, {...child.props, path: newPath, isInSwitch: isModuleRoute});
             });
             return <Switch>
                 {remappedChildren}
@@ -45,9 +48,6 @@ export const ModuleSwitch: React.FC = ({children}) => {
         }
     }</ModuleRouteContext.Consumer>;
 };
-
-
-export const ModuleSwitch_d = Switch;
 
 export const ModuleLink: React.FC<LinkProps> = (props) => {
     return <ModuleRouteContext.Consumer>{
@@ -59,7 +59,7 @@ export const ModuleLink: React.FC<LinkProps> = (props) => {
     </ModuleRouteContext.Consumer>
 };
 
-export const ModuleNavLink: React.FC<LinkProps> = (props) => {
+export const ModuleNavLink: React.FC<NavLinkProps> = (props) => {
     return <ModuleRouteContext.Consumer>{
         (value) => {
             const newTo = `${value}${props.to}`;
@@ -69,11 +69,19 @@ export const ModuleNavLink: React.FC<LinkProps> = (props) => {
     </ModuleRouteContext.Consumer>
 };
 
+export class ModuleRoute extends React.Component<RouteProps & { isInSwitch?: boolean }> {
 
-export const ModuleRoute = (props)=> <ModuleRouteContext.Consumer>{
-    (value) => {
-        const newPath = `${value}${props.path}`;
-        return <Route {...props} path={newPath}/>;
+    render() {
+        return <ModuleRouteContext.Consumer>{
+            (value) => {
+                const {isInSwitch} = this.props;
+                if (isInSwitch) {
+                    return <Route {...this.props}/>;
+                }
+                const newPath = this.props.path ? `${value}${this.props.path}` : undefined;
+                return <Route {...this.props} path={newPath}/>;
+            }
+        }
+        </ModuleRouteContext.Consumer>;
     }
 }
-</ModuleRouteContext.Consumer>;
