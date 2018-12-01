@@ -12,7 +12,7 @@ interface IPageProps extends IAppNavigatorProps {
 
 class UserList extends React.Component<IPageProps> {
 
-    private viewUserDetails = (id: string) => {
+    private onView = (id: string) => {
         this.props.AppNavigator.navigate(`/${id}`, {relativeToModule: true});
     }
 
@@ -25,7 +25,9 @@ class UserList extends React.Component<IPageProps> {
                 <ul>
                     {users.map((user) => {
                         return <li key={user.id}>
-                            <ModuleLink to={`/${user.id}`}>{user.name}</ModuleLink>
+                            <ModuleLink to={`/${user.id}`} style={{width:"100px", display:"inline-block"}}>{user.name}</ModuleLink>
+                            {'   '}
+                            <button onClick={() => {this.onView(user.id)}}>Details</button>
                         </li>;
                     })
                     }

@@ -15,7 +15,7 @@ const TopNav = () => {
     </nav>
 };
 
-const NotFound = () => <div>"Not Found :("</div>
+const NotFound = () => <div>"Not Found :("</div>;
 const Home = () => <div className={"segment"}>App Home</div>;
 const AdminHome = () => <div className={"segment"}>Admin home</div>;
 
@@ -34,7 +34,7 @@ const Admin = (props) => {
     </div>
 };
 
-// module style where path as relative to module root
+// module style where paths are relative to module's root
 const AdminAsModule = () => {
     return <ModuleRoot>
         <nav className={"nav-secondary"}>
