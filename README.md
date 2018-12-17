@@ -1,6 +1,7 @@
 # @euvs/react-app-navigator
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/euvs/react-app-navigator.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/euvs/react-app-navigator.svg?branch=master)](https://travis-ci.org/euvs/react-app-navigator)
 
 Set of utilities for easier navigation within react app. It is built on top of react-router 4.
 
