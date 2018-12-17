@@ -38,6 +38,11 @@
   "directories": {
     "lib": "lib"
   },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.x",
+    "yarn": ">= 1.6.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://euvs@github.com/euvs/react-app-navigator.git"
