@@ -1,6 +1,6 @@
 {
   "name": "@euvs/react-app-navigator",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "React App Navigator",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
@@ -13,14 +13,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@types/react": "^16.7.11",
-    "@types/react-router": "^4.4.1",
+    "@types/react": "^16.7.20",
+    "@types/react-router": "^4.4.3",
     "@types/react-router-dom": "^4.3.1",
     "query-string": "6.2.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "recompose": "^0.30.0",
     "invariant": "^2.2.4",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.2"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
