@@ -26,7 +26,7 @@ export const ModuleSwitch: React.FC = ({children}) => {
     return <ModuleRouteContext.Consumer>{
         (value) => {
             // invariant(value, "You should not use <ModuleSwitch> outside a <ModuleRootRoute>");
-            const remappedChildren = React.Children.map<any>(children, (child) => {
+            const remappedChildren = React.Children.map(children, (child) => {
                 if (!React.isValidElement(child)) {
                     return child;
                 }
