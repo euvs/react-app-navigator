@@ -1,7 +1,7 @@
-import {compose, withProps} from 'recompose';
-import {RouteComponentProps, withRouter} from 'react-router-dom';
+import { compose, withProps } from 'recompose';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as _ from 'lodash';
-import {IWithModuleRootPathProps, withModuleRootPath} from "./module-route";
+import { IWithModuleRootPathProps, withModuleRootPath } from "./module-route";
 
 export interface IAppNavigatorOptions {
     state?: any;
@@ -16,23 +16,11 @@ export interface IAppNavigatorNavigateOptions extends IAppNavigatorOptions {
     modal?: boolean;
 }
 
-export interface IAppNavigator {
-    navigate: (pathname: string, options?: IAppNavigatorNavigateOptions) => void;
-    navigateToOrigin: () => void;
-    replace: (pathname: string, options?: IAppNavigatorReplaceOptions) => void;
-    replaceToOrigin: () => void;
-    moduleRootPath: string;
-}
-
-export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}> extends RouteComponentProps<Params> {
-    AppNavigator: IAppNavigator;
-}
-
-const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
+export const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
 
     const navigate = (pathname: string, options?: IAppNavigatorNavigateOptions) => {
 
-        const {setOrigin = false, modal = false, state = {}, relativeToModule = true} = options || {};
+        const { setOrigin = false, modal = false, state = {}, relativeToModule = true } = options || {};
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
@@ -53,7 +41,7 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
     };
 
     const replace = (pathname: string, options?: IAppNavigatorReplaceOptions) => {
-        const {state = {}, relativeToModule = true} = options || {};
+        const { state = {}, relativeToModule = true } = options || {};
 
         if (relativeToModule && props.moduleRootPath) {
             pathname = `${props.moduleRootPath}${pathname}`;
@@ -77,18 +65,20 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
         replace(returnTo);
     };
 
-    const createAppNavigator = (): IAppNavigator => ({
-        replace,
-        navigate,
-        replaceToOrigin,
-        navigateToOrigin,
-        moduleRootPath: props.moduleRootPath,
-    });
-
     return {
-        AppNavigator: createAppNavigator()
+        AppNavigator: {
+            replace,
+            navigate,
+            replaceToOrigin,
+            navigateToOrigin,
+            moduleRootPath: props.moduleRootPath,
+        }
     };
 };
+
+export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}>
+    extends RouteComponentProps<Params>, ReturnType<typeof createNavigator> {
+}
 
 export const withAppNavigator = () =>
     compose(
