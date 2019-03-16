@@ -1,15 +1,14 @@
 import { compose, withProps } from 'recompose';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as _ from 'lodash';
-import { IWithModuleRootPathProps, withModuleRootPath } from "./module-route";
+import { IWithModuleRootPathProps, withModuleRootPath } from './module-route';
 
 export interface IAppNavigatorOptions {
     state?: any;
     relativeToModule?: boolean;
 }
 
-export interface IAppNavigatorReplaceOptions extends IAppNavigatorOptions {
-}
+export interface IAppNavigatorReplaceOptions extends IAppNavigatorOptions {}
 
 export interface IAppNavigatorNavigateOptions extends IAppNavigatorOptions {
     setOrigin?: boolean;
@@ -17,9 +16,7 @@ export interface IAppNavigatorNavigateOptions extends IAppNavigatorOptions {
 }
 
 export const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) => {
-
     const navigate = (pathname: string, options?: IAppNavigatorNavigateOptions) => {
-
         const { setOrigin = false, modal = false, state = {}, relativeToModule = true } = options || {};
 
         if (setOrigin) {
@@ -52,7 +49,7 @@ export const createNavigator = (props: IWithModuleRootPathProps & RouteComponent
             state: state,
         };
 
-        props.history.replace(pathname, replaceOptions)
+        props.history.replace(pathname, replaceOptions);
     };
 
     const navigateToOrigin = () => {
@@ -72,17 +69,17 @@ export const createNavigator = (props: IWithModuleRootPathProps & RouteComponent
             replaceToOrigin,
             navigateToOrigin,
             moduleRootPath: props.moduleRootPath,
-        }
+        },
     };
 };
 
 export interface IAppNavigatorProps<Params extends { [K in keyof Params]?: string } = {}>
-    extends RouteComponentProps<Params>, ReturnType<typeof createNavigator> {
-}
+    extends RouteComponentProps<Params>,
+        ReturnType<typeof createNavigator> {}
 
 export const withAppNavigator = () =>
     compose(
         withRouter,
         withModuleRootPath,
-        withProps(createNavigator),
+        withProps(createNavigator)
     );

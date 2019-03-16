@@ -2,7 +2,6 @@
     padding: 0;
 }
 
-
 .nav {
     padding: 10px 10px;
     width: 100%;
@@ -29,7 +28,6 @@
 .nav a:hover {
     background-color: #26b7ff;
 }
-
 
 main {
     padding: 5px 20px;
@@ -64,7 +62,6 @@ main {
     background-color: #8cfb6d;
 }
 
-
 .segment {
     padding: 20px;
     margin: 5px 5px 10px;
@@ -76,9 +73,9 @@ button {
     font-size: 0.8em;
     text-shadow: none;
     outline: 0;
-    padding: .5em 1em .5em;
+    padding: 0.5em 1em 0.5em;
     margin: 0 5px;
-    border-radius: .28571429rem;
+    border-radius: 0.28571429rem;
 }
 
 a {
