@@ -21,5 +21,4 @@ node_modules/
 # OSX
 .DS_Store
 
-*.js
 .idea
