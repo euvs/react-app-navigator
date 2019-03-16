@@ -6,7 +6,8 @@
   },
   "scripts": {
     "build": "npx lerna run build",
-    "format": "npx lerna run format"
+    "format": "npx lerna run format",
+    "test": "yarn --cwd ./packages/react-app-navigator run test"
   },
   "devDependencies": {
     "husky": "^1.3.1",
