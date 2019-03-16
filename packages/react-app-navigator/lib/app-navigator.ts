@@ -32,7 +32,7 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
 
     const navigate = (pathname: string, options?: IAppNavigatorNavigateOptions) => {
 
-        const {setOrigin = false, modal = false, state = {}, relativeToModule = false} = options || {};
+        const {setOrigin = false, modal = false, state = {}, relativeToModule = true} = options || {};
 
         if (setOrigin) {
             state.returnTo = props.location.pathname;
@@ -42,7 +42,7 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
             state.modal = true;
         }
 
-        if (relativeToModule) {
+        if (relativeToModule && props.moduleRootPath) {
             pathname = `${props.moduleRootPath}${pathname}`;
         }
 
@@ -53,15 +53,17 @@ const createNavigator = (props: IWithModuleRootPathProps & RouteComponentProps) 
     };
 
     const replace = (pathname: string, options?: IAppNavigatorReplaceOptions) => {
-        const {state = {}, relativeToModule = false} = options || {};
+        const {state = {}, relativeToModule = true} = options || {};
 
-        if (relativeToModule) {
+        if (relativeToModule && props.moduleRootPath) {
             pathname = `${props.moduleRootPath}${pathname}`;
         }
+
         const replaceOptions = {
             pathname: pathname,
             state: state,
         };
+
         props.history.replace(pathname, replaceOptions)
     };
 

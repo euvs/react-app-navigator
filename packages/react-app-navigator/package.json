@@ -1,0 +1,54 @@
+{
+  "name": "@euvs/react-app-navigator",
+  "version": "0.3.4",
+  "description": "React App Navigator",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "npm run build:ts",
+    "build:watch": "npm run build:ts:watch",
+    "build:ts": "tsc -p ./ ",
+    "build:ts:watch": "tsc --watch -p ./ ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "invariant": "^2.2.4",
+    "lodash": "^4.17.11",
+    "query-string": "6.2.0",
+    "recompose": "^0.30.0",
+    "typescript": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/react": "^16.7.22",
+    "@types/react-router": "^4.4.4",
+    "@types/react-router-dom": "^4.3.1",
+    "react": ">=16",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-router": "4.x",
+    "react-router-dom": "4.x"
+  },
+  "author": "Eugene Vostrikov",
+  "license": "MIT",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.x",
+    "yarn": ">= 1.6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://euvs@github.com/euvs/react-app-navigator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/euvs/react-app-navigator/issues"
+  },
+  "homepage": "https://github.com/euvs/react-app-navigator#readme"
+}
