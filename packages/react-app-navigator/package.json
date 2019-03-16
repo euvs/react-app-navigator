@@ -15,23 +15,23 @@
   "dependencies": {
     "invariant": "^2.2.4",
     "lodash": "^4.17.11",
-    "query-string": "6.2.0",
+    "query-string": "6.4.0",
     "recompose": "^0.30.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3333"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.5",
-    "@types/react": "^16.7.22",
-    "@types/react-router": "^4.4.4",
+    "@types/mocha": "^5.2.6",
+    "@types/react": "^16.8.8",
+    "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.1",
     "react": ">=16",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-router": "4.x",
-    "react-router-dom": "4.x"
+    "react": "^16.7",
+    "react-router": "> 4.x",
+    "react-router-dom": "> 4.x"
   },
   "author": "Eugene Vostrikov",
   "license": "MIT",
