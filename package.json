@@ -5,9 +5,10 @@
     "yarn": "^1.13.0"
   },
   "scripts": {
-    "build": "npx lerna run build",
-    "format": "npx lerna run format",
-    "test": "yarn --cwd ./packages/react-app-navigator run test"
+    "test": "yarn --cwd ./packages/react-app-navigator run test",
+    "build": "lerna run build",
+    "build:lib": "yarn --cwd ./packages/react-app-navigator run build",
+    "format:all": "npx lerna run format"
   },
   "devDependencies": {
     "husky": "^1.3.1",
