@@ -10,7 +10,8 @@
     "build:watch": "npm run build:ts:watch",
     "build:ts": "tsc -p ./ ",
     "build:ts:watch": "tsc --watch -p ./ ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write './lib/**/*.{ts,tsx,css,scss}'"
   },
   "dependencies": {
     "invariant": "^2.2.4",
