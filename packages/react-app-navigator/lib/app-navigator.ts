@@ -45,7 +45,6 @@ export const createNavigator = (props: IWithModuleRootPathProps & RouteComponent
         }
 
         const replaceOptions = {
-            pathname: pathname,
             state: state,
         };
 

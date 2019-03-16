@@ -2,7 +2,7 @@ import { Route, RouteProps, Switch, withRouter } from 'react-router';
 import * as React from 'react';
 import { Link, LinkProps, NavLink, NavLinkProps } from 'react-router-dom';
 
-const ModuleRouteContext = React.createContext('/');
+const ModuleRouteContext = React.createContext(null);
 
 export const ModuleRoot = withRouter(({ children, match }) => {
     return <ModuleRouteContext.Provider value={match.path}>{children}</ModuleRouteContext.Provider>;
