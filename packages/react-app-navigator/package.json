@@ -1,6 +1,6 @@
 {
   "name": "@euvs/react-app-navigator",
-  "version": "0.4.0",
+  "version": "0.4.1-alpha.0+bf01a89",
   "description": "React App Navigator",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
@@ -25,16 +25,16 @@
     "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.1",
     "jest": "23.6.0",
-    "react": ">=16",
+    "react": ">=16.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-testing-library": "^6.0.0",
-    "ts-jest": "^23.10.5"
+    "ts-jest": "23.10.5"
   },
   "peerDependencies": {
     "react": "^16.7",
-    "react-router": "> 4.x",
-    "react-router-dom": "> 4.x"
+    "react-router": "4.x",
+    "react-router-dom": "4.x"
   },
   "author": "Eugene Vostrikov",
   "license": "MIT",
@@ -53,5 +53,6 @@
   "bugs": {
     "url": "https://github.com/euvs/react-app-navigator/issues"
   },
-  "homepage": "https://github.com/euvs/react-app-navigator#readme"
+  "homepage": "https://github.com/euvs/react-app-navigator#readme",
+  "gitHead": "bf01a8922ec001770366f725270565d1c9b70f4d"
 }
