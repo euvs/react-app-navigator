@@ -1,6 +1,6 @@
 {
   "name": "@euvs/react-app-navigator",
-  "version": "0.4.1-alpha.0+bf01a89",
+  "version": "0.4.1",
   "description": "React App Navigator",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
