@@ -53,12 +53,12 @@ export const createNavigator = (props: IWithModuleRootPathProps & RouteComponent
 
     const navigateToOrigin = () => {
         const returnTo = _.get(props, 'location.state.returnTo', '/');
-        navigate(returnTo);
+        props.history.push(returnTo);
     };
 
     const replaceToOrigin = () => {
         const returnTo = _.get(props, 'location.state.returnTo', '/');
-        replace(returnTo);
+        props.history.replace(returnTo);
     };
 
     return {

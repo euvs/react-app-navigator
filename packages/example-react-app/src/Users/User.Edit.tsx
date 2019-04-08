@@ -11,7 +11,10 @@ interface IPageProps extends IAppNavigatorProps {
 }
 
 class EditView extends React.Component<IPageProps> {
-    private onCancel = () => {
+    private onCancelNavigate = () => {
+        this.props.AppNavigator.navigateToOrigin();
+    };
+    private onCancelReplace = () => {
         this.props.AppNavigator.replaceToOrigin();
     };
 
@@ -22,7 +25,8 @@ class EditView extends React.Component<IPageProps> {
                 <h3>Edit User Page</h3>
                 <hr />
                 <p>Name: {user.name}</p>
-                <button onClick={this.onCancel}>Cancel (back to origin)</button>
+                <button onClick={this.onCancelReplace}>Cancel (replace to origin)</button>
+                <button onClick={this.onCancelNavigate}>Cancel (navigate to origin)</button>
             </div>
         );
     }

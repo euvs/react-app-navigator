@@ -866,17 +866,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@euvs/react-app-navigator@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@euvs/react-app-navigator/-/react-app-navigator-0.4.0.tgz#59b5a42b287ff54b5fa401345600956130296a77"
-  integrity sha512-RMILKKVpKsk8LG8w5Hj1c0niJUw6nTweaydWhiLo7NUme7zEmxd+pyt2/Ufg8r+SjBrEJM6CYuVfBuR2es1S/w==
-  dependencies:
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    query-string "6.4.0"
-    recompose "^0.30.0"
-    typescript "^3.3.3333"
-
 "@jest/types@^24.5.0":
   version "24.5.0"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-24.5.0.tgz#feee214a4d0167b0ca447284e95a57aa10b3ee95"
